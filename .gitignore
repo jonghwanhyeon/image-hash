@@ -1,3 +1,6 @@
+# Created by http://gitignore.io
+
+### Python ###
 *.py[cod]
 
 # C extensions
@@ -34,3 +37,22 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Rope
+.ropeproject
+
+
+### C++ ###
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
