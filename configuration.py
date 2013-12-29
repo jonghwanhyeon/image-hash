@@ -1,0 +1,1 @@
+IMAGE_HASH_LIBRARY_PATH = 'image-hash/image-hash.dylib'
