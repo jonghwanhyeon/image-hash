@@ -45,11 +45,11 @@ class ImageHashStorage:
         if not self.image_hash.image_hash_storage_add(self.storage, id.encode(), c_ulonglong(hash)):
             raise Exception('failed to add image hash to storage', self.image_hash.image_hash_storage_get_last_error())
 
-    def query(self, hash):
+    def query(self, hash, radius=22.0):
         neighbor_id = c_char_p()
         neighbor_hash = c_ulonglong()
 
-        if not self.image_hash.image_hash_storage_query(self.storage, c_ulonglong(hash), byref(neighbor_id), byref(neighbor_hash)):
+        if not self.image_hash.image_hash_storage_query(self.storage, c_ulonglong(hash), c_float(radius), byref(neighbor_id), byref(neighbor_hash)):
             raise Exception('failed to query image hash from storage', self.image_hash.image_hash_storage_get_last_error())
 
         if not neighbor_hash.value:

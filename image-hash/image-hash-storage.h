@@ -15,8 +15,6 @@ extern "C" {
 #define MVPTREE_PATH_LENGTH 5
 #define MVPTREE_LEAF_CAPACITY 25
 
-#define MVPTREE_THRESHOLD 24.0
-
 extern "C" {
 	
 MVPTree *image_hash_storage_create();
@@ -26,7 +24,7 @@ int image_hash_storage_store(MVPTree *tree, const char *filename);
 MVPTree *image_hash_storage_load(const char *filename);
 
 int image_hash_storage_add(MVPTree *tree, const char *id, unsigned long long hash);
-int image_hash_storage_query(MVPTree *tree, unsigned long long hash, char **neighbor_id, unsigned long long *neighbor_hash);
+int image_hash_storage_query(MVPTree *tree, unsigned long long hash, float radius, char **neighbor_id, unsigned long long *neighbor_hash);
 
 int image_hash_storage_get_last_error();
 

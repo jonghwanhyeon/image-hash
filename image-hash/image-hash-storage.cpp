@@ -49,14 +49,14 @@ int image_hash_storage_add(MVPTree *tree, const char *id, unsigned long long has
 	return 1;
 }
 
-int image_hash_storage_query(MVPTree *tree, unsigned long long hash, char **neighbor_id, unsigned long long *neighbor_hash) {
+int image_hash_storage_query(MVPTree *tree, unsigned long long hash, float radius, char **neighbor_id, unsigned long long *neighbor_hash) {
 	*neighbor_id = NULL;
 	*neighbor_hash = 0;
 
 	MVPDP *point = image_hash_storage_create_point("query-point", hash);
 
 	unsigned int number_of_points;
-	MVPDP **points = mvptree_retrieve(tree, point, 1, MVPTREE_THRESHOLD, &number_of_points, &error);
+	MVPDP **points = mvptree_retrieve(tree, point, 1, radius, &number_of_points, &error);
 	if ((error != MVP_SUCCESS) && (error != MVP_EMPTYTREE) && (error != MVP_KNEARESTCAP) && (error != MVP_BADDISTVAL)) {
 		image_hash_storage_free_point(point);
 		return 0;
