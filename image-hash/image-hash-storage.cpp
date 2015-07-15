@@ -8,6 +8,10 @@ void image_hash_storage_free_point(MVPDP *point);
 MVPError error;
 
 float image_hash_storage_comparator(MVPDP *point1, MVPDP *point2) {
+	if ((point1 == NULL) || (point2 == NULL)) {
+		return -1.0f;
+	}
+
 	unsigned long long *hash1 = (unsigned long long *)point1->data;
 	unsigned long long *hash2 = (unsigned long long *)point2->data;
 
@@ -53,7 +57,7 @@ int image_hash_storage_query(MVPTree *tree, unsigned long long hash, char **neig
 
 	unsigned int number_of_points;
 	MVPDP **points = mvptree_retrieve(tree, point, 1, MVPTREE_THRESHOLD, &number_of_points, &error);
-	if ((error != MVP_SUCCESS) && (error != MVP_EMPTYTREE) && (error != MVP_KNEARESTCAP)) {
+	if ((error != MVP_SUCCESS) && (error != MVP_EMPTYTREE) && (error != MVP_KNEARESTCAP) && (error != MVP_BADDISTVAL)) {
 		image_hash_storage_free_point(point);
 		return 0;
 	}
