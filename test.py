@@ -8,7 +8,7 @@ files = [
     'images/dancing-girl-with-arrow.jpg',
     'images/man.jpg',
     'images/man-cropped.jpg',
-    'images/diet-will-be-start-on-tommrow.jpg',
+    'images/diet-will-be-started-on-tommrow.jpg',
     'images/there-is-no-reason-not-to-happy.jpg',
     'images/doctor.gif',
 ]
